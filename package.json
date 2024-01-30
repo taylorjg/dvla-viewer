@@ -1,7 +1,8 @@
 {
   "name": "dvla-viewer",
+  "description": "Simple app to lookup car registrations using DVLA API",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",

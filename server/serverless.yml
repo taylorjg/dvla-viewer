@@ -1,0 +1,23 @@
+frameworkVersion: '3'
+org: taylorjg
+app: dvla-viewer
+service: dvla-viewer
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  environment:
+    API_KEY: ${param:apiKey}
+  httpApi:
+    cors: true
+
+plugins:
+  - serverless-webpack
+
+functions:
+  search:
+    handler: lookup.handler
+    events:
+      - httpApi:
+          method: get
+          path: /api/lookup
