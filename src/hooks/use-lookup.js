@@ -14,12 +14,11 @@ const lookup = async (registrationNumber) => {
   return response.data;
 };
 
-export const useLookup = () => {
-  const registrationNumber = "WV18UXA";
-
+export const useLookup = (registrationNumber) => {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["lookup", registrationNumber],
     queryFn: () => lookup(registrationNumber),
+    enabled: Boolean(registrationNumber),
   });
 
   return {
