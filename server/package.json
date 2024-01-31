@@ -1,15 +1,19 @@
 {
   "name": "server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Serverless backend for this simple app",
   "scripts": {
     "deploy": "serverless deploy",
-    "info": "serverless info"
+    "info": "serverless info",
+    "build:main": "webpack --config webpack.main.js",
+    "run:main": "npm run build:main && node dist/main"
   },
   "author": "Jonathan Taylor",
   "license": "MIT",
   "devDependencies": {
-    "serverless-webpack": "^5.13.0"
+    "dotenv": "^16.4.1",
+    "serverless-webpack": "^5.13.0",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "axios": "^1.6.7"
