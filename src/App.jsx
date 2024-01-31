@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Container, LinearProgress, TextField } from "@mui/material";
 
 import { useLookup } from "@app/hooks";
-import { Error } from "@app/components";
+import { Error, VehicleDetails } from "@app/components";
 
 import { StyledForm } from "./App.styles";
 
@@ -38,6 +38,7 @@ export const App = () => {
         {isLoading && <LinearProgress sx={{ width: "100%" }} />}
         {isError && <Error error={error} />}
       </StyledForm>
+      {data && <VehicleDetails vehicleDetails={data.data} />}
     </Container>
   );
 };
