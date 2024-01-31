@@ -6,3 +6,8 @@ export const StyledForm = styled.form`
   align-items: flex-start;
   gap: 1rem;
 `;
+
+export const StyledButtons = styled.div`
+  display: flex;
+  gap: 1rem;
+`;

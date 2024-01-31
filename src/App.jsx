@@ -4,23 +4,25 @@ import { Button, Container, LinearProgress, TextField } from "@mui/material";
 import { useLookup } from "@app/hooks";
 import { Error, VehicleDetails } from "@app/components";
 
-import { StyledForm } from "./App.styles";
+import { StyledForm, StyledButtons } from "./App.styles";
 
 export const App = () => {
   const [value, setValue] = useState("");
   const [registrationNumber, setRegistrationNumber] = useState("");
   const { data, isLoading, isError, error } = useLookup(registrationNumber);
 
-  console.log({ data, isLoading, isError, error });
-
   const onChange = (event) => {
-    console.log(event.target.value);
     setValue(event.target.value);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
     setRegistrationNumber(value);
+  };
+
+  const onReset = () => {
+    setValue("");
+    setRegistrationNumber("");
   };
 
   return (
@@ -32,9 +34,21 @@ export const App = () => {
           value={value}
           onChange={onChange}
         />
-        <Button size="small" variant="outlined" type="submit">
-          Lookup
-        </Button>
+        <StyledButtons>
+          <Button size="small" variant="outlined" type="submit">
+            Lookup
+          </Button>
+          <Button
+            size="small"
+            variant="outlined"
+            type="button"
+            onClick={onReset}
+            color="error"
+            disabled={!registrationNumber || isLoading}
+          >
+            Reset
+          </Button>
+        </StyledButtons>
         {isLoading && <LinearProgress sx={{ width: "100%" }} />}
         {isError && <Error error={error} />}
       </StyledForm>
