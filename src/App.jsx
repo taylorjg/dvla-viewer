@@ -1,26 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-
-axios.defaults.baseURL =
-  "https://jen123ryri.execute-api.us-east-1.amazonaws.com";
-
-const lookup = async (registrationNumber) => {
-  const config = {
-    params: {
-      registrationNumber,
-    },
-  };
-  const response = await axios.get("/api/lookup", config);
-  return response.data;
-};
+import { useLookup } from "@app/hooks";
 
 export const App = () => {
-  const registrationNumber = "WV18UXA";
-
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["lookup", registrationNumber],
-    queryFn: () => lookup(registrationNumber),
-  });
+  const { data, isLoading, isError, error } = useLookup();
 
   if (isLoading) return <div>Loading...</div>;
 
