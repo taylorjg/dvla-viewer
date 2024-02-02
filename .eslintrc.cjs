@@ -24,4 +24,12 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+  overrides: [
+    {
+      files: ["*.cy.js"],
+      rules: {
+        "vitest/expect-expect": "off",
+      },
+    },
+  ],
 };

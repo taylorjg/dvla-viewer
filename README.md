@@ -16,9 +16,9 @@ This is a little React app that uses the Vehicle Enquiry Service (VES) API to lo
 * [x] Display version number in bottom right corner
 * [ ] Add unit tests using React Testing Library and Mock Service Worker
 * [x] Add end-to-end tests using Cypress
-* [ ] Use GitHub Actions to implement a CI/CD workflow to:
+* [x] Use GitHub Actions to implement a CI/CD workflow to:
     * [x] Run lint check
-    * [ ] Run unit tests
+    * [x] Run unit tests
     * [x] Run end-to-end tests
     * [x] Deploy to gh-pages
 
