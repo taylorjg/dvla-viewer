@@ -3,7 +3,7 @@ on: push
 
 jobs:
   run-unit-tests:
-    name: Run unit tests
+    name: Run lint check and unit tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,8 +14,8 @@ jobs:
         run: npm clean-install
       - name: Run lint
         run: npm run lint
-      # - name: Run unit tests
-      #   run: npm test
+      - name: Run unit tests
+        run: npm test
 
   run-e2e-tests:
     name: Run end-to-end tests
