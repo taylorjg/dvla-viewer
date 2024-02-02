@@ -15,15 +15,10 @@ export const makeErrorResponse = (statusCode, errorMessage) => {
   return makeResponse(statusCode, { error: errorMessage });
 };
 
+// https://developer-portal.driver-vehicle-licensing.api.gov.uk/apis/vehicle-enquiry-service/vehicle-enquiry-service-description.html#test-environment-response
 export const extractErrorMessage = (error) => {
   const errors = error.response?.data?.errors;
   if (Array.isArray(errors) && errors.length > 0) {
-    // {
-    //   status: '400',
-    //   code: '400',
-    //   title: 'Bad Request',
-    //   detail: 'Invalid format for field - vehicle registration number'
-    // }
     return errors[0].detail;
   }
   return error.message;
@@ -50,6 +45,7 @@ export const wrapHandlerImplementation = async (
     const result = await handlerImplementation(makeSpecialResponse);
     return specialResponse ?? makeResponse(200, result);
   } catch (error) {
+    console.log("Caught error:", error.message);
     if (axios.isAxiosError(error)) {
       const statusCode = error.response.status;
       const errorMessage = extractErrorMessage(error);

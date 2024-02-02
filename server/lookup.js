@@ -20,7 +20,9 @@ export const handler = async (event) => {
   return U.wrapHandlerImplementation("/api/lookup", async () => {
     const registrationNumber =
       event.queryStringParameters?.registrationNumber ?? "";
+    console.info("registrationNumber:", registrationNumber);
     const result = await handlerImpl(registrationNumber);
+    console.info("result:", result);
     return result;
   });
 };
