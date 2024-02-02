@@ -4,7 +4,7 @@ import { handler } from "./lookup";
 
 const main = async () => {
   try {
-    const registrationNumber = "WV18UXA";
+    const registrationNumber = "MC20FLY";
     const event = {
       queryStringParameters: {
         registrationNumber,
