@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Container, LinearProgress, TextField } from "@mui/material";
 
 import { useLookup } from "@app/hooks";
-import { Error, VehicleDetails } from "@app/components";
+import { Error, VehicleDetails, Version } from "@app/components";
 
 import { StyledForm, StyledButtons } from "./App.styles";
 
@@ -53,6 +53,7 @@ export const App = () => {
         {isError && <Error error={error} />}
       </StyledForm>
       {data && <VehicleDetails vehicleDetails={data.data} />}
+      <Version />
     </Container>
   );
 };
