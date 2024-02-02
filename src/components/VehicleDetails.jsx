@@ -5,7 +5,7 @@ import * as changeCase from "change-case";
 
 export const VehicleDetails = ({ vehicleDetails }) => {
   return (
-    <List disablePadding>
+    <List disablePadding data-testid="vehicle-details">
       {Object.entries(vehicleDetails).map(([key, value], index) => {
         const label = changeCase.capitalCase(key);
 

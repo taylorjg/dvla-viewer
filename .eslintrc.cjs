@@ -10,6 +10,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "prettier",
     "plugin:prettier/recommended",
+    "plugin:cypress/recommended",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parserOptions: { ecmaVersion: "latest", sourceType: "module" },
