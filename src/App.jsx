@@ -12,7 +12,7 @@ export const App = () => {
   const { data, isLoading, isError, error } = useLookup(registrationNumber);
 
   const onChange = (event) => {
-    setValue(event.target.value);
+    setValue(event.target.value.toUpperCase());
   };
 
   const onSubmit = (event) => {
@@ -25,17 +25,27 @@ export const App = () => {
     setRegistrationNumber("");
   };
 
+  const isValueLockedIn = Boolean(registrationNumber);
+
   return (
     <Container sx={{ mt: 2 }}>
       <StyledForm onSubmit={onSubmit}>
         <TextField
           size="small"
+          variant="standard"
+          autoComplete="off"
           label="Registration Number"
           value={value}
           onChange={onChange}
+          disabled={isValueLockedIn}
         />
         <StyledButtons>
-          <Button size="small" variant="outlined" type="submit">
+          <Button
+            size="small"
+            variant="outlined"
+            type="submit"
+            disabled={!value || isValueLockedIn}
+          >
             Lookup
           </Button>
           <Button
@@ -44,7 +54,7 @@ export const App = () => {
             type="button"
             onClick={onReset}
             color="error"
-            disabled={!registrationNumber || isLoading}
+            disabled={!isValueLockedIn || isLoading}
           >
             Reset
           </Button>
