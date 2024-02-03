@@ -8,7 +8,7 @@ describe("dvla-viewer spec", () => {
   it("shows vehicle details for a valid registration number", () => {
     cy.visit("/");
     cy.findByLabelText("Registration Number").type("MC20FLY{enter}");
-    checkVechicleDetailsItem("Registration Number", "MC20FLY");
+    checkVechicleDetailsItem("Registration Number", "MC20 FLY");
     checkVechicleDetailsItem("Tax Status", "Taxed");
     checkVechicleDetailsItem("Year Of Manufacture", "2020");
     checkVechicleDetailsItem("Make", "PEUGEOT");
