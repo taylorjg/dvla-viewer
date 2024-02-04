@@ -56,7 +56,7 @@ const formatCc = (value) => {
   return `${value} cc`;
 };
 
-const formatGramPerKm = (value) => {
+const formatGramsPerKm = (value) => {
   return `${value} g/km`;
 };
 
@@ -71,7 +71,7 @@ const formatString = (value) => {
 const FIELD_FORMATTERS = new Map([
   ["taxDueDate", formatDateDayMonthYear],
   ["engineCapacity", formatCc],
-  ["co2Emissions", formatGramPerKm],
+  ["co2Emissions", formatGramsPerKm],
   ["markedForExport", formatBool],
   ["revenueWeight", formatKg],
   ["dateOfLastV5CIssued", formatDateDayMonthYear],

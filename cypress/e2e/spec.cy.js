@@ -1,6 +1,6 @@
 const checkVechicleDetailsItem = (label, value) => {
   cy.findByTestId("vehicle-details").within(() => {
-    cy.findByText(label).closest("li").findByText(value);
+    cy.findByText(label).closest("li, tr").findByText(value);
   });
 };
 

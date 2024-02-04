@@ -1,3 +1,4 @@
 export * from "./Error";
-export * from "./VehicleDetails";
+export * from "./VehicleDetailsList";
+export * from "./VehicleDetailsTable";
 export * from "./Version";

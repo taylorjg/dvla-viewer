@@ -7,7 +7,7 @@ import { formatField } from "@app/helpers";
 
 import { RegistrationPlate } from "./RegistrationPlate";
 
-export const VehicleDetails = ({ vehicleDetails }) => {
+export const VehicleDetailsList = ({ vehicleDetails }) => {
   return (
     <Box sx={{ mt: 2, pb: 2 }}>
       <List disablePadding data-testid="vehicle-details">
@@ -35,6 +35,6 @@ export const VehicleDetails = ({ vehicleDetails }) => {
   );
 };
 
-VehicleDetails.propTypes = {
+VehicleDetailsList.propTypes = {
   vehicleDetails: PropTypes.object.isRequired,
 };

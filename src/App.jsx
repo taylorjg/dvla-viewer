@@ -1,12 +1,27 @@
 import { useState } from "react";
-import { Button, Container, LinearProgress, TextField } from "@mui/material";
+import {
+  Button,
+  Container,
+  Grid,
+  LinearProgress,
+  TextField,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 
 import { useLookup } from "@app/hooks";
-import { Error, VehicleDetails, Version } from "@app/components";
+import {
+  Error,
+  VehicleDetailsList,
+  VehicleDetailsTable,
+  Version,
+} from "@app/components";
 
 import { StyledForm, StyledButtons } from "./App.styles";
 
 export const App = () => {
+  const theme = useTheme();
+  const isXs = useMediaQuery(theme.breakpoints.down("sm"));
   const [value, setValue] = useState("");
   const [registrationNumber, setRegistrationNumber] = useState("");
   const { data, isLoading, isError, error } = useLookup(registrationNumber);
@@ -27,42 +42,50 @@ export const App = () => {
 
   const isValueLockedIn = Boolean(registrationNumber);
 
+  const VehicleDetailsComponent = isXs
+    ? VehicleDetailsList
+    : VehicleDetailsTable;
+
   return (
     <Container sx={{ mt: 2 }}>
-      <StyledForm onSubmit={onSubmit}>
-        <TextField
-          size="small"
-          variant="standard"
-          autoComplete="off"
-          label="Registration Number"
-          value={value}
-          onChange={onChange}
-          disabled={isValueLockedIn}
-        />
-        <StyledButtons>
-          <Button
-            size="small"
-            variant="outlined"
-            type="submit"
-            disabled={!value || isValueLockedIn}
-          >
-            Lookup
-          </Button>
-          <Button
-            size="small"
-            variant="outlined"
-            type="button"
-            onClick={onReset}
-            color="error"
-            disabled={!isValueLockedIn || isLoading}
-          >
-            Reset
-          </Button>
-        </StyledButtons>
-        {isLoading && <LinearProgress sx={{ width: "100%" }} />}
-        {isError && <Error error={error} />}
-      </StyledForm>
-      {data && <VehicleDetails vehicleDetails={data.data} />}
+      <Grid container>
+        <Grid item xs={12} md={6} sx={{ mx: { xs: 2, md: "auto" } }}>
+          <StyledForm onSubmit={onSubmit}>
+            <TextField
+              size="small"
+              variant="standard"
+              autoComplete="off"
+              label="Registration Number"
+              value={value}
+              onChange={onChange}
+              disabled={isValueLockedIn}
+            />
+            <StyledButtons>
+              <Button
+                size="small"
+                variant="outlined"
+                type="submit"
+                disabled={!value || isValueLockedIn}
+              >
+                Lookup
+              </Button>
+              <Button
+                size="small"
+                variant="outlined"
+                type="button"
+                onClick={onReset}
+                color="error"
+                disabled={!isValueLockedIn || isLoading}
+              >
+                Reset
+              </Button>
+            </StyledButtons>
+            {isLoading && <LinearProgress sx={{ width: "100%" }} />}
+            {isError && <Error error={error} />}
+          </StyledForm>
+          {data && <VehicleDetailsComponent vehicleDetails={data.data} />}
+        </Grid>
+      </Grid>
       <Version />
     </Container>
   );
