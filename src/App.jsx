@@ -16,6 +16,7 @@ import {
   VehicleDetailsTable,
   Version,
 } from "@app/components";
+import { orderFields } from "@app/helpers";
 
 import { StyledForm, StyledButtons } from "./App.styles";
 
@@ -45,6 +46,8 @@ export const App = () => {
   const VehicleDetailsComponent = isXs
     ? VehicleDetailsList
     : VehicleDetailsTable;
+
+  const vehicleDetails = data ? orderFields(data.data) : {};
 
   return (
     <Container sx={{ mt: 2 }}>
@@ -83,7 +86,7 @@ export const App = () => {
             {isLoading && <LinearProgress sx={{ width: "100%" }} />}
             {isError && <Error error={error} />}
           </StyledForm>
-          {data && <VehicleDetailsComponent vehicleDetails={data.data} />}
+          {data && <VehicleDetailsComponent vehicleDetails={vehicleDetails} />}
         </Grid>
       </Grid>
       <Version />
