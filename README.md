@@ -23,6 +23,16 @@ This is a little React app that uses the Vehicle Enquiry Service (VES) API to lo
     * [x] Run end-to-end tests
     * [x] Deploy to gh-pages
 
+# Screenshots
+
+## Phone (Portrait)
+
+![Alt text](screenshots/screenshot-phone-portrait.png)
+
+## Phone (Landscape)
+
+![Alt text](screenshots/screenshot-phone-landscape.png)
+
 # Links
 
 * [Vehicle Enquiry Service (VES) API Guide](https://developer-portal.driver-vehicle-licensing.api.gov.uk/apis/vehicle-enquiry-service/vehicle-enquiry-service-description.html#vehicle-enquiry-service-ves-api-guide)
