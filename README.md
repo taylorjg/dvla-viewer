@@ -10,6 +10,7 @@ This is a little React app that uses the Vehicle Enquiry Service (VES) API to lo
 * react-query & axios
 * Vitest & React Testing Library & Mock Service Worker
 * Cypress & Cypress Testing Library
+* GitHub Actions workflows
 * Serverless Framework
 
 # TODO
