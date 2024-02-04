@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Box, Divider, List, ListItem, ListItemText } from "@mui/material";
 import * as changeCase from "change-case";
 
+import { formatField } from "@app/helpers";
+
 import { RegistrationPlate } from "./RegistrationPlate";
 
 export const VehicleDetails = ({ vehicleDetails }) => {
@@ -16,7 +18,7 @@ export const VehicleDetails = ({ vehicleDetails }) => {
             key === "registrationNumber" ? (
               <RegistrationPlate registrationNumber={value} />
             ) : (
-              value
+              formatField(key, value)
             );
 
           return (

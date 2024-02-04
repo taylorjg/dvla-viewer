@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import { formatRegistration } from "@app/formatRegistration";
+import { formatRegistration } from "@app/helpers";
 
 import { StyledRegistrationPlate } from "./RegistrationPlate.styles";
 
