@@ -1,7 +1,6 @@
-// https://developer-portal.driver-vehicle-licensing.api.gov.uk/apis/vehicle-enquiry-service/v1.2.0-vehicle-enquiry-service.html#schemas-properties-3
-
 import { partition } from "./utils";
 
+// https://developer-portal.driver-vehicle-licensing.api.gov.uk/apis/vehicle-enquiry-service/v1.2.0-vehicle-enquiry-service.html#schemas-properties-3
 const ORDERED_FIELDS = [
   "registrationNumber",
   "taxStatus",
@@ -28,18 +27,20 @@ const ORDERED_FIELDS = [
 ];
 
 export const orderFields = (vehicleDetails) => {
-  const map = new Map(ORDERED_FIELDS.map((field, index) => [field, index]));
-  const kvps = Object.entries(vehicleDetails);
-  const [kvps1, kvps2] = partition(kvps, ([key]) =>
-    ORDERED_FIELDS.includes(key)
+  const sortOrderMap = new Map(
+    ORDERED_FIELDS.map((field, index) => [field, index])
   );
-  const sortedKvps1 = kvps1.sort((a, b) => {
-    const [keyA] = a;
-    const [keyB] = b;
-    const sortOrderA = map.get(keyA);
-    const sortOrderB = map.get(keyB);
+  const kvps = Object.entries(vehicleDetails);
+  const [kvpsInMap, kvpsNotInMap] = partition(kvps, ([field]) =>
+    sortOrderMap.has(field)
+  );
+  const sortedKvpsInMap = kvpsInMap.sort((kvpA, kvpB) => {
+    const [fieldA] = kvpA;
+    const [fieldB] = kvpB;
+    const sortOrderA = sortOrderMap.get(fieldA);
+    const sortOrderB = sortOrderMap.get(fieldB);
     return sortOrderA - sortOrderB;
   });
-  const allKvps = [...sortedKvps1, ...kvps2];
-  return Object.fromEntries(allKvps);
+  const combinedKvps = [...sortedKvpsInMap, ...kvpsNotInMap];
+  return Object.fromEntries(combinedKvps);
 };
