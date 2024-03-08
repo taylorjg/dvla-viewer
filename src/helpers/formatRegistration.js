@@ -6,8 +6,9 @@
 // followed by 1, 2, 3 or 4 digits. The letters in the registration would originally
 // have been able to identify the area of the country in which the registration was issued.
 const datelessStyle = (m) => {
-  const parts = [m[1], m[2], m[3], m[4]];
-  return parts.filter(Boolean).join(" ");
+  const part1 = m[1];
+  const part2 = m[2];
+  return `${part1} ${part2}`;
 };
 
 // Suffix - 1963 to 1983
@@ -45,7 +46,11 @@ const newStyle = (m) => {
 
 const FORMATTERS = [
   {
-    regex: /^([0-9]{1,4})([A-Z]{1,3})$|^([A-Z]{1,3})([0-9]{1,4})$/,
+    regex: /^([0-9]{1,4})([A-Z]{1,3})$/,
+    formatter: datelessStyle,
+  },
+  {
+    regex: /^([A-Z]{1,3})([0-9]{1,4})$/,
     formatter: datelessStyle,
   },
   {
