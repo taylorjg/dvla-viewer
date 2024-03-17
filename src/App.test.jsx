@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { getByText, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { http, HttpResponse } from "msw";
@@ -29,8 +29,8 @@ const renderApp = () => {
 
 const checkVehicleDetailsItem = (label, value) => {
   const vehicleDetails = screen.getByTestId("vehicle-details");
-  expect(within(vehicleDetails).getByText(label)).toBeInTheDocument();
-  expect(within(vehicleDetails).getByText(value)).toBeInTheDocument();
+  expect(getByText(vehicleDetails, label)).toBeInTheDocument();
+  expect(getByText(vehicleDetails, value)).toBeInTheDocument();
 };
 
 describe("App integration tests", () => {
