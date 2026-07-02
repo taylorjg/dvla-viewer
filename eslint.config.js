@@ -1,0 +1,93 @@
+import js from "@eslint/js";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
+import cypress from "eslint-plugin-cypress";
+import prettier from "eslint-plugin-prettier";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import vitest from "@vitest/eslint-plugin";
+import globals from "globals";
+
+export default [
+  {
+    ignores: ["dist/**"],
+  },
+  js.configs.recommended,
+  eslintConfigPrettier,
+  {
+    files: ["**/*.{js,jsx}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        ...globals.browser,
+        ...globals.es2020,
+      },
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+      },
+    },
+    plugins: {
+      react,
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+      prettier,
+    },
+    settings: {
+      react: { version: "18.2" },
+    },
+    rules: {
+      ...react.configs.recommended.rules,
+      ...react.configs["jsx-runtime"].rules,
+      ...reactHooks.configs.recommended.rules,
+      ...prettier.configs.recommended.rules,
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
+    },
+  },
+  {
+    files: ["**/*.{test,spec}.{js,jsx}", "src/setupFiles.js"],
+    plugins: { vitest },
+    rules: {
+      ...vitest.configs.recommended.rules,
+    },
+    languageOptions: {
+      globals: {
+        ...vitest.environments.env.globals,
+      },
+    },
+  },
+  {
+    files: ["cypress/**/*.{js,jsx}", "**/*.cy.js"],
+    ...cypress.configs.recommended,
+    ...cypress.configs.globals,
+  },
+  {
+    files: ["server/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
+    files: ["server/webpack*.js"],
+    languageOptions: {
+      sourceType: "commonjs",
+      globals: {
+        ...globals.node,
+        ...globals.commonjs,
+      },
+    },
+  },
+  {
+    files: ["vite.config.js", "eslint.config.js", "cypress.config.js"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+];

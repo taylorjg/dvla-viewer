@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const slsw = require("serverless-webpack");
 
 module.exports = {

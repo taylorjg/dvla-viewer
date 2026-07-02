@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 import axios from "axios";
 
 import * as U from "./serverless-utils";
