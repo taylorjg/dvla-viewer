@@ -2,7 +2,6 @@ import js from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 import cypress from "eslint-plugin-cypress";
 import prettier from "eslint-plugin-prettier";
-import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import vitest from "@vitest/eslint-plugin";
@@ -28,17 +27,11 @@ export default [
       },
     },
     plugins: {
-      react,
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
       prettier,
     },
-    settings: {
-      react: { version: "19" },
-    },
     rules: {
-      ...react.configs.recommended.rules,
-      ...react.configs["jsx-runtime"].rules,
       ...reactHooks.configs.recommended.rules,
       ...prettier.configs.recommended.rules,
       "react-refresh/only-export-components": [
