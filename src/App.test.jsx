@@ -51,9 +51,10 @@ describe("App integration tests", () => {
       })
     );
     renderApp();
+    const user = userEvent.setup();
 
     // Act
-    userEvent.type(
+    await user.type(
       await screen.findByLabelText("Registration Number"),
       "ELV15{enter}"
     );
@@ -77,9 +78,10 @@ describe("App integration tests", () => {
       })
     );
     renderApp();
+    const user = userEvent.setup();
 
     // Act
-    userEvent.type(
+    await user.type(
       await screen.findByLabelText("Registration Number"),
       "MC20FL{enter}"
     );

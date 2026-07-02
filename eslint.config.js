@@ -34,7 +34,7 @@ export default [
       prettier,
     },
     settings: {
-      react: { version: "18.2" },
+      react: { version: "19" },
     },
     rules: {
       ...react.configs.recommended.rules,

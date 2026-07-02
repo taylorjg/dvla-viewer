@@ -2,12 +2,12 @@ import { useState } from "react";
 import {
   Button,
   Container,
-  Grid,
   LinearProgress,
   TextField,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 
 import { useLookup } from "@app/hooks";
 import {
@@ -52,7 +52,7 @@ export const App = () => {
   return (
     <Container sx={{ mt: 2 }}>
       <Grid container>
-        <Grid item xs={12} md={6} sx={{ mx: { xs: 2, md: "auto" } }}>
+        <Grid size={{ xs: 12, md: 6 }} sx={{ mx: { xs: 2, md: "auto" } }}>
           <StyledForm onSubmit={onSubmit}>
             <TextField
               size="small"
