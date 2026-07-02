@@ -2,12 +2,12 @@ import { useState } from "react";
 import {
   Button,
   Container,
+  Grid,
   LinearProgress,
   TextField,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
-import Grid from "@mui/material/Grid2";
 
 import { useLookup } from "@app/hooks";
 import {
