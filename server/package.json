@@ -11,11 +11,11 @@
   "author": "Jonathan Taylor",
   "license": "MIT",
   "devDependencies": {
-    "dotenv": "^16.4.1",
-    "serverless-webpack": "^5.13.0",
+    "dotenv": "^17.4.2",
+    "serverless-webpack": "^5.15.4",
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "axios": "^1.6.7"
+    "axios": "^1.18.1"
   }
 }
