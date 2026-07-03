@@ -9,7 +9,9 @@
     "build": "vite build",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "open": "open https://taylorjg.github.io/dvla-viewer",
     "test": "vitest run --reporter verbose",
     "test:cypress": "cypress run --e2e --browser chrome",
     "test:cypress:open": "cypress open --e2e --browser chrome"

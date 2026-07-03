@@ -1,5 +1,3 @@
-org: taylorjg
-app: dvla-viewer
 service: dvla-viewer
 
 build:
@@ -9,9 +7,10 @@ build:
 
 provider:
   name: aws
+  profile: taylorjg
   runtime: nodejs24.x
   environment:
-    API_KEY: ${param:apiKey}
+    API_KEY: ${env:API_KEY}
   httpApi:
     cors: true
 
