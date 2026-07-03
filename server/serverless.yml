@@ -1,7 +1,9 @@
-frameworkVersion: '3'
 org: taylorjg
 app: dvla-viewer
 service: dvla-viewer
+
+build:
+  esbuild: false
 
 provider:
   name: aws
