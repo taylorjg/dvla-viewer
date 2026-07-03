@@ -5,6 +5,7 @@
   "scripts": {
     "deploy": "serverless deploy",
     "info": "serverless info",
+    "logs": "serverless logs -f search",
     "test:invoke": "serverless invoke -f search -d '{\"queryStringParameters\": {\"registrationNumber\": \"SS2\"}}'",
     "test:local": "serverless invoke local -f search -d '{\"queryStringParameters\": {\"registrationNumber\": \"SS2\"}}'"
   },
