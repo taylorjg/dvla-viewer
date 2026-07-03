@@ -3,18 +3,17 @@ app: dvla-viewer
 service: dvla-viewer
 
 build:
-  esbuild: false
+  esbuild:
+    bundle: true
+    minify: true
 
 provider:
   name: aws
-  runtime: nodejs18.x
+  runtime: nodejs24.x
   environment:
     API_KEY: ${param:apiKey}
   httpApi:
     cors: true
-
-plugins:
-  - serverless-webpack
 
 functions:
   search:
