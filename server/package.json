@@ -5,8 +5,8 @@
   "scripts": {
     "deploy": "serverless deploy",
     "info": "serverless info",
-    "build:main": "webpack --config webpack.main.js",
-    "run:main": "npm run build:main && node dist/main"
+    "test:invoke": "serverless invoke -f search -d '{\"queryStringParameters\": {\"registrationNumber\": \"SS2\"}}'",
+    "test:local": "serverless invoke local -f search -d '{\"queryStringParameters\": {\"registrationNumber\": \"SS2\"}}'"
   },
   "author": "Jonathan Taylor",
   "license": "MIT",
