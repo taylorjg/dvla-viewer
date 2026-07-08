@@ -9,7 +9,7 @@ import globals from "globals";
 
 export default [
   {
-    ignores: ["dist/**"],
+    ignores: ["dist/**", "server/dist/**", "server/.serverless/**"],
   },
   js.configs.recommended,
   eslintConfigPrettier,
