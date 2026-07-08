@@ -1,4 +1,4 @@
-import { formatField } from "./formatField";
+import { formatField } from "./format-field";
 
 describe("formatField unit tests", () => {
   it("bool true", () => {

@@ -1,4 +1,4 @@
-import { orderFields } from "./orderFields";
+import { orderFields } from "./order-fields";
 
 describe("orderFields unit tests", () => {
   it("all known fields", () => {

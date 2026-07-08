@@ -5,7 +5,7 @@ import * as changeCase from "change-case";
 
 import { formatField } from "@app/helpers";
 
-import { RegistrationPlate } from "./RegistrationPlate";
+import { RegistrationPlate } from "./registration-plate";
 
 export const VehicleDetailsList = ({ vehicleDetails }) => {
   return (

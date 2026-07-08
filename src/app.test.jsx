@@ -5,7 +5,7 @@ import { http, HttpResponse } from "msw";
 
 import { server } from "@app/mocks/server";
 
-import { App } from "./App";
+import { App } from "./app";
 
 const API_LOOKUP_PATH =
   "https://jen123ryri.execute-api.us-east-1.amazonaws.com/api/lookup";

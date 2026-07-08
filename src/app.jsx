@@ -18,7 +18,7 @@ import {
 } from "@app/components";
 import { orderFields } from "@app/helpers";
 
-import { StyledForm, StyledButtons } from "./App.styles";
+import { StyledForm, StyledButtons } from "./app.styles";
 
 export const App = () => {
   const theme = useTheme();

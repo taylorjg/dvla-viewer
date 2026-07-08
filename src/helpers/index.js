@@ -1,3 +1,3 @@
-export * from "./formatField";
-export * from "./formatRegistration";
-export * from "./orderFields";
+export * from "./format-field";
+export * from "./format-registration";
+export * from "./order-fields";

@@ -41,7 +41,7 @@ export default [
     },
   },
   {
-    files: ["**/*.{test,spec}.{js,jsx}", "src/setupFiles.js"],
+    files: ["**/*.{test,spec}.{js,jsx}", "src/setup-files.js"],
     plugins: { vitest },
     rules: {
       ...vitest.configs.recommended.rules,

@@ -1,4 +1,4 @@
-import { formatRegistration } from "./formatRegistration";
+import { formatRegistration } from "./format-registration";
 
 describe("formatRegistration unit tests", () => {
   it.each([
