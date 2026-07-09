@@ -12,7 +12,7 @@
   "author": "Jonathan Taylor",
   "license": "MIT",
   "devDependencies": {
-    "serverless": "^4.38.1"
+    "serverless": "^4.39.0"
   },
   "dependencies": {
     "axios": "^1.18.1"
