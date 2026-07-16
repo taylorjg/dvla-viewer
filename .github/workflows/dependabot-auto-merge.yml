@@ -1,5 +1,12 @@
 name: Dependabot auto-merge
 
+# Repository settings required:
+#   1. Settings → General → Pull Requests → "Allow auto-merge"
+#   2. Settings → Actions → General → Workflow permissions →
+#      "Allow GitHub Actions to create and approve pull requests"
+#      Without (2), the approve step below is skipped gracefully and
+#      auto-merge still runs if branch protection only requires checks.
+
 on: pull_request
 
 permissions:
@@ -21,6 +28,7 @@ jobs:
         if: |
           steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
           steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        continue-on-error: true
         run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
