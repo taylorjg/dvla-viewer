@@ -53,5 +53,10 @@
     "prettier": "^3.8.1",
     "vite": "^8.1.5",
     "vitest": "^4.1.9"
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true,
+    "msw@2.15.0": true,
+    "cypress@15.18.1": true
   }
 }
