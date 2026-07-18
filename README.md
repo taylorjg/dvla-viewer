@@ -1,3 +1,5 @@
+[![CI/CD](https://github.com/taylorjg/dvla-viewer/actions/workflows/ci-cd.yaml/badge.svg)](https://github.com/taylorjg/dvla-viewer/actions/workflows/ci-cd.yaml)
+
 # Description
 
 This is a little React app that uses the Vehicle Enquiry Service (VES) API to lookup vehicle details by registration number.
