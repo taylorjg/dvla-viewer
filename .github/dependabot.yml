@@ -6,8 +6,10 @@ updates:
       - "/server"
     schedule:
       interval: "weekly"
+    rebase-strategy: auto
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+    rebase-strategy: auto
