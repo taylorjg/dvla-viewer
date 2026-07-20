@@ -31,7 +31,7 @@ jobs:
         with:
           start: npm run dev
           # The "wait-on" value needs to match "baseUrl" in cypress.config.js.
-          wait-on: "http://localhost:5174"
+          wait-on: "http://localhost:5173"
           browser: chrome
 
   deploy:

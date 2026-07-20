@@ -9,9 +9,6 @@ export default defineConfig({
     __BUNDLED_DEV__: "false",
     __SERVER_FORWARD_CONSOLE__: JSON.stringify({ enabled: false }),
   },
-  server: {
-    port: 5174,
-  },
   plugins: [react()],
   resolve: {
     alias: [{ find: "@app", replacement: path.resolve(__dirname, "src") }],
