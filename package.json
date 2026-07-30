@@ -38,7 +38,7 @@
     "@types/react-dom": "^19.1.6",
     "@eslint/js": "^10.0.1",
     "@vitejs/plugin-react": "^6.0.4",
-    "@vitest/eslint-plugin": "^1.6.23",
+    "@vitest/eslint-plugin": "^1.6.24",
     "cypress": "^15.18.0",
     "eslint": "^10.7.0",
     "eslint-config-prettier": "^10.1.8",
