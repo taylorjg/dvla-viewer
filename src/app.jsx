@@ -58,6 +58,7 @@ export const App = () => {
               size="small"
               variant="standard"
               autoComplete="off"
+              autoFocus
               label="Registration Number"
               value={value}
               onChange={onChange}
