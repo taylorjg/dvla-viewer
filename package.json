@@ -30,13 +30,13 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@testing-library/cypress": "^10.0.1",
     "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "@eslint/js": "^10.0.1",
     "@vitejs/plugin-react": "^6.0.4",
     "@vitest/eslint-plugin": "^1.6.24",
     "cypress": "^15.18.0",
@@ -48,7 +48,7 @@
     "eslint-plugin-react-refresh": "^0.5.3",
     "gh-pages": "^6.3.0",
     "globals": "^17.8.0",
-    "jsdom": "^29.1.1",
+    "jsdom": "^30.0.1",
     "msw": "^2.12.10",
     "prettier": "^3.8.1",
     "vite": "^8.1.5",
