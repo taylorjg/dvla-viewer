@@ -2,29 +2,50 @@
 
 # Description
 
-This is a little React app that uses the Vehicle Enquiry Service (VES) API to lookup vehicle details by registration number.
+A React app that looks up vehicle details by registration number via the [DVLA Vehicle Enquiry Service (VES) API](https://developer-portal.driver-vehicle-licensing.api.gov.uk/apis/vehicle-enquiry-service/vehicle-enquiry-service-description.html).
+
+- **Deployed site:** https://taylorjg.github.io/dvla-viewer
+- **Backend:** AWS Lambda in [`server/`](server/README.md) (API key stays server-side)
+
+# Development
+
+Frontend (repo root):
+
+```bash
+npm ci
+npm run dev               # Vite dev server
+npm run lint              # ESLint (includes Prettier)
+npm test                  # Vitest + MSW (src/ only)
+npm run test:cypress      # Cypress end-to-end tests
+```
+
+The server backend has its own toolchain — see [server/README.md](server/README.md).
+
+# CI
+
+GitHub Actions (`.github/workflows/ci-cd.yaml`) runs on every push and pull request:
+
+| Job | What it runs |
+|---|---|
+| Run lint check and unit tests | `npm run lint`, `npm test` (frontend) |
+| Run end-to-end tests | Cypress against `npm run dev` |
+| Run server checks | `cd server && npm run check` |
+
+All three jobs are required for merges to `main`.
+
+Deploy to gh-pages runs when a version tag is pushed, after the frontend jobs pass.
+
+Server CI needs repository secrets `API_KEY` and `SERVERLESS_ACCESS_KEY` — see [server/README.md](server/README.md).
 
 # Technologies
 
-* Vite
-* React
+* Vite & React
 * Material UI
-* react-query & axios
-* Vitest & React Testing Library & Mock Service Worker
+* TanStack Query & axios
+* Vitest, React Testing Library & Mock Service Worker
 * Cypress & Cypress Testing Library
-* GitHub Actions workflows
-* Serverless Framework
-
-# TODO
-
-* [x] Display version number in bottom right corner
-* [x] Add unit tests using React Testing Library and Mock Service Worker
-* [x] Add end-to-end tests using Cypress
-* [x] Use GitHub Actions to implement a CI/CD workflow to:
-    * [x] Run lint check
-    * [x] Run unit tests
-    * [x] Run end-to-end tests
-    * [x] Deploy to gh-pages
+* GitHub Actions
+* Serverless Framework (backend in `server/`)
 
 # Screenshots
 
@@ -35,7 +56,3 @@ This is a little React app that uses the Vehicle Enquiry Service (VES) API to lo
 ## Phone (Landscape)
 
 ![Alt text](screenshots/screenshot-phone-landscape.png)
-
-# Links
-
-* [Vehicle Enquiry Service (VES) API Guide](https://developer-portal.driver-vehicle-licensing.api.gov.uk/apis/vehicle-enquiry-service/vehicle-enquiry-service-description.html#vehicle-enquiry-service-ves-api-guide)
