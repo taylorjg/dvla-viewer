@@ -3,18 +3,35 @@
   "version": "0.0.5",
   "description": "Serverless backend for this simple app",
   "scripts": {
-    "deploy": "serverless deploy",
-    "info": "serverless info",
-    "logs": "serverless logs -f search",
-    "test:invoke": "serverless invoke -f search -d '{\"queryStringParameters\": {\"registrationNumber\": \"SS2\"}}'",
-    "test:local": "serverless invoke local -f search -d '{\"queryStringParameters\": {\"registrationNumber\": \"SS2\"}}'"
+    "deploy": "SLS_AWS_SDK=3 serverless deploy",
+    "info": "SLS_AWS_SDK=3 serverless info",
+    "logs": "SLS_AWS_SDK=3 serverless logs -f lookup",
+    "lint": "eslint '*.js' tests eslint.config.mjs vitest.config.mjs --report-unused-disable-directives --max-warnings 0",
+    "test": "vitest run --reporter verbose",
+    "invoke:local": "bash scripts/invoke-all-local.sh",
+    "invoke:deployed": "bash scripts/invoke-all-deployed.sh",
+    "invoke:curl": "bash scripts/curl-all.sh",
+    "check": "npm run lint && npm test && npm run invoke:local"
   },
   "author": "Jonathan Taylor",
   "license": "MIT",
-  "devDependencies": {
-    "serverless": "^4.40.0"
-  },
   "dependencies": {
     "axios": "^1.19.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@vitest/eslint-plugin": "^1.6.24",
+    "dotenv": "^17.4.2",
+    "eslint": "^10.8.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "globals": "^17.7.0",
+    "prettier": "^3.9.6",
+    "serverless": "^4.40.0",
+    "vitest": "^4.1.9"
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true,
+    "serverless@4.40.0": true
   }
 }

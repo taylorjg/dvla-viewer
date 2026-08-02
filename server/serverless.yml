@@ -15,7 +15,7 @@ provider:
     cors: true
 
 functions:
-  search:
+  lookup:
     handler: lookup.handler
     events:
       - httpApi:
