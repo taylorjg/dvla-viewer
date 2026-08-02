@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Serverless backend for this simple app",
   "scripts": {
     "deploy": "SLS_AWS_SDK=3 serverless deploy",
