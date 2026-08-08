@@ -6,13 +6,7 @@ import globals from "globals";
 
 export default [
   {
-    ignores: [
-      "**/node_modules/**",
-      "**/.serverless/**",
-      "**/dist/**",
-      "**/coverage/**",
-      "package-lock.json",
-    ],
+    ignores: ["node_modules/**", ".serverless/**", "dist/**", "coverage/**"],
   },
   js.configs.recommended,
   eslintConfigPrettier,
