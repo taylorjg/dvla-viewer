@@ -1,5 +1,5 @@
 import axios from "axios";
-import packageJson from "./package.json";
+import packageJson from "../package.json";
 
 export const makeResponse = (statusCode, body) => {
   return {

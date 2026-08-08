@@ -2,7 +2,7 @@ import "dotenv/config";
 
 import { describe, expect, it } from "vitest";
 
-import { handler } from "../lookup.js";
+import { handler } from "../src/lookup.js";
 
 const TEST_REGISTRATION = "SS2";
 

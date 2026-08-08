@@ -16,7 +16,7 @@ provider:
 
 functions:
   lookup:
-    handler: lookup.handler
+    handler: src/lookup.handler
     events:
       - httpApi:
           method: get

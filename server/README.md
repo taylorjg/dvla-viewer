@@ -89,9 +89,9 @@ Frontend tests run separately at the repo root; root `npm test` is scoped to `sr
 ## Project layout
 
 ```
-lookup.js           Lambda handler
-serverless-utils.js Shared HTTP/error helpers
-serverless.yml      Stack definition (function key: lookup)
-tests/              Handler integration tests
-scripts/            Local invoke and curl helpers
+src/lookup.js           Lambda handler
+src/serverless-utils.js Shared HTTP/error helpers
+serverless.yml          Stack definition (function key: lookup)
+tests/                  Handler integration tests
+scripts/                Local invoke and curl helpers
 ```

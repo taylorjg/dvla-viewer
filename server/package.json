@@ -6,7 +6,7 @@
     "deploy": "SLS_AWS_SDK=3 serverless deploy",
     "info": "SLS_AWS_SDK=3 serverless info",
     "logs": "SLS_AWS_SDK=3 serverless logs -f lookup",
-    "lint": "eslint '*.js' tests eslint.config.mjs vitest.config.mjs --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "test": "vitest run --reporter verbose",
     "invoke:local": "bash scripts/invoke-all-local.sh",
     "invoke:deployed": "bash scripts/invoke-all-deployed.sh",
