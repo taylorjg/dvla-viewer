@@ -1,4 +1,4 @@
-[![CI/CD](https://github.com/taylorjg/dvla-viewer/actions/workflows/ci-cd.yaml/badge.svg)](https://github.com/taylorjg/dvla-viewer/actions/workflows/ci-cd.yaml)
+[![CI/CD](https://github.com/taylorjg/dvla-viewer/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/taylorjg/dvla-viewer/actions/workflows/ci-cd.yml)
 
 # Description
 
@@ -23,7 +23,7 @@ The server backend has its own toolchain — see [server/README.md](server/READM
 
 # CI
 
-GitHub Actions (`.github/workflows/ci-cd.yaml`) runs on every push and pull request:
+GitHub Actions (`.github/workflows/ci-cd.yml`) runs on every push and pull request:
 
 | Job | What it runs |
 |---|---|
