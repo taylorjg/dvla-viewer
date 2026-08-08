@@ -5,8 +5,7 @@ on:
   pull_request:
 
 jobs:
-  run-unit-tests:
-    name: Run lint check and unit tests
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -25,8 +24,7 @@ jobs:
       - name: Run unit tests
         run: npm test
 
-  run-e2e-tests:
-    name: Run end-to-end tests
+  e2e:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -44,7 +42,6 @@ jobs:
           browser: chrome
 
   server-check:
-    name: Run server checks
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -70,7 +67,7 @@ jobs:
   deploy:
     name: Deploy to gh-pages
     if: github.ref_type == 'tag' && startsWith(github.ref_name, 'v')
-    needs: [run-unit-tests, run-e2e-tests]
+    needs: [test, e2e]
     runs-on: ubuntu-latest
     permissions:
       contents: write

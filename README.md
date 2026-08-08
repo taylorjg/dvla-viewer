@@ -27,9 +27,9 @@ GitHub Actions (`.github/workflows/ci-cd.yml`) runs on every push and pull reque
 
 | Job | What it runs |
 |---|---|
-| Run lint check and unit tests | `npm run lint`, `npm test` (frontend) |
-| Run end-to-end tests | Cypress against `npm run dev` |
-| Run server checks | `cd server && npm run check` |
+| `test` | `npm run lint`, `npm test` (frontend) |
+| `e2e` | Cypress against `npm run dev` |
+| `server-check` | `cd server && npm run check` |
 
 All three jobs are required for merges to `main`.
 

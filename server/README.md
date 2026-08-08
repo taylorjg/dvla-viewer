@@ -75,7 +75,7 @@ Deploy scripts set `SLS_AWS_SDK=3` for AWS SDK v3 compatibility with Serverless 
 
 ## CI
 
-The monorepo workflow (`.github/workflows/ci-cd.yml`) runs `npm run check` in this directory as the **Run server checks** job. That job is required for merges to `main`.
+The monorepo workflow (`.github/workflows/ci-cd.yml`) runs `npm run check` in this directory as the **`server-check`** job. That job is required for merges to `main`.
 
 CI requires repository secrets:
 
