@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Button,
   Container,
@@ -31,6 +31,8 @@ export const App = () => {
   const isXs = useMediaQuery(theme.breakpoints.down("sm"));
   const [value, setValue] = useState("");
   const [registrationNumber, setRegistrationNumber] = useState("");
+  const [resultsAnnouncement, setResultsAnnouncement] = useState("");
+  const resultsRef = useRef(null);
   const { data, isLoading, isError, error } = useLookup(registrationNumber);
 
   const onChange = (event) => {
@@ -54,6 +56,21 @@ export const App = () => {
     : VehicleDetailsTable;
 
   const vehicleDetails = data ? orderFields(data.data) : {};
+
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
+
+    const summary = formatVehicleDetailsSummary(orderFields(data.data));
+    const announcementTimeoutId = window.setTimeout(() => {
+      setResultsAnnouncement(summary);
+    }, 100);
+
+    resultsRef.current?.focus();
+
+    return () => window.clearTimeout(announcementTimeoutId);
+  }, [data]);
 
   return (
     <StyledAppShell>
@@ -101,8 +118,19 @@ export const App = () => {
                 {isError && <Error error={error} />}
               </div>
             </StyledForm>
+            <StyledVisuallyHidden
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              {data ? resultsAnnouncement : ""}
+            </StyledVisuallyHidden>
             {data && (
-              <section aria-labelledby="vehicle-details-heading">
+              <section
+                ref={resultsRef}
+                tabIndex={0} // eslint-disable-line jsx-a11y-x/no-noninteractive-tabindex -- keyboard entry point for results after lookup
+                aria-labelledby="vehicle-details-heading"
+              >
                 <Typography
                   component="h2"
                   variant="h6"
@@ -111,9 +139,6 @@ export const App = () => {
                 >
                   Vehicle details
                 </Typography>
-                <StyledVisuallyHidden aria-live="polite" aria-atomic="true">
-                  {formatVehicleDetailsSummary(vehicleDetails)}
-                </StyledVisuallyHidden>
                 <VehicleDetailsComponent vehicleDetails={vehicleDetails} />
               </section>
             )}

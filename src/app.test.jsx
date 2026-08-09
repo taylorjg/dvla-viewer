@@ -1,4 +1,10 @@
-import { getByText, render, screen, within } from "@testing-library/react";
+import {
+  getByText,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { http, HttpResponse } from "msw";
@@ -62,10 +68,15 @@ describe("App integration tests", () => {
     // Assert
     expect(await screen.findByTestId("vehicle-details")).toBeInTheDocument();
     expect(
-      screen.getByText(
-        "Registration Number: ELV 15. Make: PONTIAC. Colour: YELLOW. Fuel Type: PETROL"
-      )
-    ).toBeInTheDocument();
+      await screen.findByRole("region", { name: "Vehicle details" })
+    ).toHaveFocus();
+    await waitFor(() => {
+      expect(
+        screen.getByText(
+          "Registration Number: ELV 15. Make: PONTIAC. Colour: YELLOW. Fuel Type: PETROL"
+        )
+      ).toBeInTheDocument();
+    });
     checkVehicleDetailsItem("Registration Number", "ELV 15");
     checkVehicleDetailsItem("Colour", "YELLOW");
     checkVehicleDetailsItem("Make", "PONTIAC");
