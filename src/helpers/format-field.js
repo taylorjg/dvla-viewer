@@ -1,3 +1,7 @@
+import * as changeCase from "change-case";
+
+import { formatRegistration } from "./format-registration";
+
 const formatDay = (d) => {
   return parseInt(d, 10);
 };
@@ -82,4 +86,17 @@ const FIELD_FORMATTERS = new Map([
 export const formatField = (key, value) => {
   const formatter = FIELD_FORMATTERS.get(key) ?? formatString;
   return formatter(value);
+};
+
+export const formatVehicleDetailsSummary = (vehicleDetails) => {
+  return Object.entries(vehicleDetails)
+    .map(([key, value]) => {
+      const label = changeCase.capitalCase(key);
+      const formattedValue =
+        key === "registrationNumber"
+          ? formatRegistration(value)
+          : formatField(key, value);
+      return `${label}: ${formattedValue}`;
+    })
+    .join(". ");
 };

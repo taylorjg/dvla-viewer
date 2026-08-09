@@ -16,9 +16,9 @@ import { RegistrationPlate } from "./registration-plate";
 
 export const VehicleDetailsTable = ({ vehicleDetails }) => {
   return (
-    <Box sx={{ mt: 2, pb: 2 }}>
+    <Box sx={{ pb: 2 }}>
       <TableContainer data-testid="vehicle-details">
-        <Table>
+        <Table aria-label="Vehicle details">
           <TableBody>
             {Object.entries(vehicleDetails).map(([key, value]) => {
               const label = changeCase.capitalCase(key);
@@ -32,8 +32,10 @@ export const VehicleDetailsTable = ({ vehicleDetails }) => {
 
               return (
                 <TableRow key={key}>
-                  <TableCell>
-                    <Typography variant="subtitle2">{label}</Typography>
+                  <TableCell component="th" scope="row">
+                    <Typography component="span" variant="subtitle2">
+                      {label}
+                    </Typography>
                   </TableCell>
                   <TableCell>{secondary}</TableCell>
                 </TableRow>

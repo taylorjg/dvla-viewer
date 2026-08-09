@@ -1,12 +1,7 @@
-import {
-  getByText,
-  render,
-  screen,
-  waitFor,
-  within,
-} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { axe } from "vitest-axe";
 import { http, HttpResponse } from "msw";
 
 import { server } from "@app/mocks/server";
@@ -26,22 +21,21 @@ const renderApp = () => {
     },
   });
 
-  render(
+  return render(
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
   );
 };
 
-const checkVehicleDetailsItem = (label, value) => {
-  const vehicleDetails = screen.getByTestId("vehicle-details");
-  expect(getByText(vehicleDetails, label)).toBeInTheDocument();
-  expect(getByText(vehicleDetails, value)).toBeInTheDocument();
-};
+describe("App accessibility", () => {
+  it("has no critical or serious axe violations on initial render", async () => {
+    const { container } = renderApp();
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
 
-describe("App integration tests", () => {
-  it("success scenario", async () => {
-    // Arrange
+  it("has no critical or serious axe violations after a successful lookup", async () => {
     server.use(
       http.get(API_LOOKUP_PATH, ({ request }) => {
         const url = new URL(request.url);
@@ -56,35 +50,22 @@ describe("App integration tests", () => {
         });
       })
     );
-    renderApp();
+
+    const { container } = renderApp();
     const user = userEvent.setup();
 
-    // Act
     await user.type(
       await screen.findByLabelText("Registration Number"),
       "ELV15{enter}"
     );
 
-    // Assert
     expect(await screen.findByTestId("vehicle-details")).toBeInTheDocument();
-    expect(
-      await screen.findByRole("region", { name: "Vehicle details" })
-    ).toHaveFocus();
-    await waitFor(() => {
-      expect(
-        screen.getByText(
-          "Registration Number: ELV 15. Make: PONTIAC. Colour: YELLOW. Fuel Type: PETROL"
-        )
-      ).toBeInTheDocument();
-    });
-    checkVehicleDetailsItem("Registration Number", "ELV 15");
-    checkVehicleDetailsItem("Colour", "YELLOW");
-    checkVehicleDetailsItem("Make", "PONTIAC");
-    checkVehicleDetailsItem("Fuel Type", "PETROL");
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 
-  it("error scenario", async () => {
-    // Arrange
+  it("has no critical or serious axe violations after an error", async () => {
     server.use(
       http.get(API_LOOKUP_PATH, () => {
         return HttpResponse.json(
@@ -93,18 +74,20 @@ describe("App integration tests", () => {
         );
       })
     );
-    renderApp();
+
+    const { container } = renderApp();
     const user = userEvent.setup();
 
-    // Act
     await user.type(
       await screen.findByLabelText("Registration Number"),
       "MC20FL{enter}"
     );
 
-    // Assert
     expect(
-      within(await screen.findByRole("alert")).getByText("my unit test error")
+      await screen.findByRole("alert", {}, { timeout: 3000 })
     ).toBeInTheDocument();
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

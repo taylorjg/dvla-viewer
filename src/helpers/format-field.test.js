@@ -1,4 +1,4 @@
-import { formatField } from "./format-field";
+import { formatField, formatVehicleDetailsSummary } from "./format-field";
 
 describe("formatField unit tests", () => {
   it("bool true", () => {
@@ -34,5 +34,16 @@ describe("formatField unit tests", () => {
   it("kg", () => {
     const actual = formatField("revenueWeight", "1625");
     expect(actual).toBe("1625 kg");
+  });
+
+  it("vehicle details summary", () => {
+    const actual = formatVehicleDetailsSummary({
+      registrationNumber: "MC20FLY",
+      make: "PEUGEOT",
+      colour: "BLUE",
+    });
+    expect(actual).toBe(
+      "Registration Number: MC20 FLY. Make: PEUGEOT. Colour: BLUE"
+    );
   });
 });

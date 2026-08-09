@@ -1,6 +1,7 @@
 import js from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 import cypress from "eslint-plugin-cypress";
+import jsxA11yX from "eslint-plugin-jsx-a11y-x";
 import prettier from "eslint-plugin-prettier";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
@@ -20,7 +21,9 @@ export default [
   eslintConfigPrettier,
   {
     files: ["**/*.{js,jsx}"],
+    ...jsxA11yX.configs.recommended,
     languageOptions: {
+      ...jsxA11yX.configs.recommended.languageOptions,
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
@@ -32,11 +35,13 @@ export default [
       },
     },
     plugins: {
+      ...jsxA11yX.configs.recommended.plugins,
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
       prettier,
     },
     rules: {
+      ...jsxA11yX.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       ...prettier.configs.recommended.rules,
       "react-refresh/only-export-components": [

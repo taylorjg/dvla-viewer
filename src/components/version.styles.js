@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
 
-export const StyledVersion = styled.div`
+export const StyledVersion = styled.footer`
   font-size: small;
   font-style: italic;
-  position: fixed;
-  bottom: 0.5rem;
-  right: 0.5rem;
+  text-align: right;
+  padding: 0.5rem;
 `;
