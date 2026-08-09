@@ -25,3 +25,6 @@ dist-ssr
 
 .serverless/
 .env
+
+# Generated accessibility reports
+a11y/
