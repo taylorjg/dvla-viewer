@@ -38,12 +38,12 @@ The server backend has its own toolchain — see [server/README.md](server/READM
 
 **Automated checks:**
 
-| Command | Tool | Runs in CI |
-|---|---|---|
-| `npm run lint` | eslint-plugin-jsx-a11y-x | yes (`test` job) |
-| `npm test` | vitest-axe on initial, success, and error states | yes (`test` job) |
-| `npm run test:cypress` | cypress-axe on success and error flows | yes (`e2e` job) |
-| `npm run a11y:report` | Lighthouse accessibility category | no (local only; score 100 on static landing page at time of writing) |
+| Command                | Tool                                             | Runs in CI                                                           |
+| ---------------------- | ------------------------------------------------ | -------------------------------------------------------------------- |
+| `npm run lint`         | eslint-plugin-jsx-a11y-x                         | yes (`test` job)                                                     |
+| `npm test`             | vitest-axe on initial, success, and error states | yes (`test` job)                                                     |
+| `npm run test:cypress` | cypress-axe on success and error flows           | yes (`e2e` job)                                                      |
+| `npm run a11y:report`  | Lighthouse accessibility category                | no (local only; score 100 on static landing page at time of writing) |
 
 **Manual spot-check** (5–10 minutes): tab through the form and buttons; submit with Enter; confirm results or errors are announced (VoiceOver on macOS or NVDA on Windows); zoom to 200% and confirm the layout remains usable.
 
@@ -51,11 +51,11 @@ The server backend has its own toolchain — see [server/README.md](server/READM
 
 GitHub Actions (`.github/workflows/ci-cd.yml`) runs on every push and pull request:
 
-| Job | What it runs |
-|---|---|
-| `test` | `npm run lint`, `npm test` (frontend, includes axe) |
-| `e2e` | Cypress against `npm run dev` (includes axe) |
-| `server-check` | `cd server && npm run check` |
+| Job            | What it runs                                        |
+| -------------- | --------------------------------------------------- |
+| `test`         | `npm run lint`, `npm test` (frontend, includes axe) |
+| `e2e`          | Cypress against `npm run dev` (includes axe)        |
+| `server-check` | `cd server && npm run check`                        |
 
 All three jobs are required for merges to `main`.
 
@@ -65,14 +65,14 @@ Server CI needs repository secrets `API_KEY` and `SERVERLESS_ACCESS_KEY` — see
 
 # Technologies
 
-* Vite & React
-* Material UI
-* TanStack Query & axios
-* Vitest, React Testing Library, vitest-axe & Mock Service Worker
-* Cypress, Cypress Testing Library & cypress-axe
-* eslint-plugin-jsx-a11y-x
-* GitHub Actions
-* Serverless Framework (backend in `server/`)
+- Vite & React
+- Material UI
+- TanStack Query & axios
+- Vitest, React Testing Library, vitest-axe & Mock Service Worker
+- Cypress, Cypress Testing Library & cypress-axe
+- eslint-plugin-jsx-a11y-x
+- GitHub Actions
+- Serverless Framework (backend in `server/`)
 
 # Screenshots
 

@@ -6,9 +6,9 @@ Built with [Serverless Framework](https://www.serverless.com/framework) v4 on No
 
 ## API
 
-| Endpoint | Method | Query params | Description |
-|---|---|---|---|
-| `/api/lookup` | GET | `registrationNumber` | Look up vehicle details by registration |
+| Endpoint      | Method | Query params         | Description                             |
+| ------------- | ------ | -------------------- | --------------------------------------- |
+| `/api/lookup` | GET    | `registrationNumber` | Look up vehicle details by registration |
 
 ### Example
 
@@ -53,12 +53,12 @@ npm run invoke:curl       # Hit deployed HTTP API
 npm run logs              # Tail CloudWatch logs for lookup
 ```
 
-| Command | Network | Secrets / credentials |
-|---|---|---|
-| `npm test` | Yes (DVLA API) | `API_KEY` |
-| `npm run invoke:local` | Yes (DVLA API) | `API_KEY`, `SERVERLESS_ACCESS_KEY` |
+| Command                   | Network              | Secrets / credentials                           |
+| ------------------------- | -------------------- | ----------------------------------------------- |
+| `npm test`                | Yes (DVLA API)       | `API_KEY`                                       |
+| `npm run invoke:local`    | Yes (DVLA API)       | `API_KEY`, `SERVERLESS_ACCESS_KEY`              |
 | `npm run invoke:deployed` | Yes (DVLA API + AWS) | `API_KEY`, AWS profile, `SERVERLESS_ACCESS_KEY` |
-| `npm run invoke:curl` | Yes (deployed API) | None (uses URL in script) |
+| `npm run invoke:curl`     | Yes (deployed API)   | None (uses URL in script)                       |
 
 Helper scripts live in `scripts/` (`invoke-all-local.sh`, `invoke-all-deployed.sh`, `curl-all.sh`).
 
@@ -79,9 +79,9 @@ The monorepo workflow (`.github/workflows/ci-cd.yml`) runs `npm run check` in th
 
 CI requires repository secrets:
 
-| Secret | Description |
-|---|---|
-| `API_KEY` | DVLA VES API key |
+| Secret                  | Description                                |
+| ----------------------- | ------------------------------------------ |
+| `API_KEY`               | DVLA VES API key                           |
 | `SERVERLESS_ACCESS_KEY` | Serverless Framework v4 CLI authentication |
 
 Frontend tests run separately at the repo root; root `npm test` is scoped to `src/` only and does not include these server integration tests.
