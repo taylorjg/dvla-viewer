@@ -70,6 +70,7 @@ export const App = () => {
                 size="small"
                 variant="standard"
                 autoComplete="off"
+                autoFocus // eslint-disable-line jsx-a11y-x/no-autofocus -- sole primary input on a single-purpose lookup page
                 label="Registration Number"
                 value={value}
                 onChange={onChange}
