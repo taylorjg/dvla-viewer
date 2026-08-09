@@ -19,7 +19,7 @@ import {
 } from "@app/components";
 import { orderFields } from "@app/helpers";
 
-import { StyledForm, StyledButtons } from "./app.styles";
+import { StyledAppShell, StyledForm, StyledButtons } from "./app.styles";
 
 export const App = () => {
   const theme = useTheme();
@@ -58,8 +58,8 @@ export const App = () => {
   }, [data]);
 
   return (
-    <>
-      <Container component="main" sx={{ mt: 2 }}>
+    <StyledAppShell>
+      <Container component="main" sx={{ flex: 1, mt: 2 }}>
         <Grid container>
           <Grid size={{ xs: 12, md: 6 }} sx={{ mx: { xs: 2, md: "auto" } }}>
             <Typography component="h1" variant="h5" sx={{ mb: 2 }}>
@@ -122,6 +122,6 @@ export const App = () => {
         </Grid>
       </Container>
       <Version />
-    </>
+    </StyledAppShell>
   );
 };
