@@ -61,6 +61,11 @@ describe("App integration tests", () => {
 
     // Assert
     expect(await screen.findByTestId("vehicle-details")).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Registration Number: ELV 15. Make: PONTIAC. Colour: YELLOW. Fuel Type: PETROL"
+      )
+    ).toBeInTheDocument();
     checkVehicleDetailsItem("Registration Number", "ELV 15");
     checkVehicleDetailsItem("Colour", "YELLOW");
     checkVehicleDetailsItem("Make", "PONTIAC");

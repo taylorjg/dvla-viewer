@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import {
   Button,
   Container,
@@ -17,9 +17,14 @@ import {
   VehicleDetailsTable,
   Version,
 } from "@app/components";
-import { orderFields } from "@app/helpers";
+import { formatVehicleDetailsSummary, orderFields } from "@app/helpers";
 
-import { StyledAppShell, StyledForm, StyledButtons } from "./app.styles";
+import {
+  StyledAppShell,
+  StyledForm,
+  StyledButtons,
+  StyledVisuallyHidden,
+} from "./app.styles";
 
 export const App = () => {
   const theme = useTheme();
@@ -27,7 +32,6 @@ export const App = () => {
   const [value, setValue] = useState("");
   const [registrationNumber, setRegistrationNumber] = useState("");
   const { data, isLoading, isError, error } = useLookup(registrationNumber);
-  const resultsHeadingRef = useRef(null);
 
   const onChange = (event) => {
     setValue(event.target.value.toUpperCase());
@@ -50,12 +54,6 @@ export const App = () => {
     : VehicleDetailsTable;
 
   const vehicleDetails = data ? orderFields(data.data) : {};
-
-  useEffect(() => {
-    if (data && resultsHeadingRef.current) {
-      resultsHeadingRef.current.focus();
-    }
-  }, [data]);
 
   return (
     <StyledAppShell>
@@ -109,12 +107,13 @@ export const App = () => {
                   component="h2"
                   variant="h6"
                   id="vehicle-details-heading"
-                  tabIndex={-1}
-                  ref={resultsHeadingRef}
-                  sx={{ mt: 2, mb: 1, outline: "none" }}
+                  sx={{ mt: 2, mb: 1 }}
                 >
                   Vehicle details
                 </Typography>
+                <StyledVisuallyHidden aria-live="polite" aria-atomic="true">
+                  {formatVehicleDetailsSummary(vehicleDetails)}
+                </StyledVisuallyHidden>
                 <VehicleDetailsComponent vehicleDetails={vehicleDetails} />
               </section>
             )}
