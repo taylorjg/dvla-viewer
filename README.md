@@ -34,7 +34,7 @@ The server backend has its own toolchain — see [server/README.md](server/READM
 - Results as an accessible table (desktop) or list (mobile), with row headers
 - Focus moves to vehicle details after a successful lookup
 
-**Known limits:** no skip link (single-column layout); backend API is out of scope for frontend a11y.
+**Known limits:** no skip link (single-column layout); version appears after main content in the page (scroll to view on long result lists); backend API is out of scope for frontend a11y.
 
 **Automated checks:**
 

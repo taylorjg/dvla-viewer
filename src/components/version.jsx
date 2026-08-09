@@ -4,7 +4,7 @@ import packageJson from "../../package.json";
 
 export const Version = () => {
   return (
-    <StyledVersion component="footer" aria-label="Application version">
+    <StyledVersion aria-label="Application version">
       version: {packageJson.version}
     </StyledVersion>
   );
