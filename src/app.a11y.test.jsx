@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { axe } from "vitest-axe";
-import { http, HttpResponse } from "msw";
+import { http, HttpResponse } from "msw/http";
 
 import { server } from "@app/mocks/server";
 

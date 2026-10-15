@@ -18,6 +18,13 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
+    // MSW 3 + jsdom: default document URL is http://localhost/, so axios requests
+    // to the API host look cross-origin and fail with "Network Error". Match the API base.
+    environmentOptions: {
+      jsdom: {
+        url: "https://jen123ryri.execute-api.us-east-1.amazonaws.com/",
+      },
+    },
     setupFiles: "./src/setup-files.js",
     include: ["src/**/*.{test,spec}.{js,jsx}"],
   },
