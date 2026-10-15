@@ -43,7 +43,7 @@ jobs:
         with:
           start: npm run dev
           # The "wait-on" value needs to match "baseUrl" in cypress.config.js.
-          wait-on: "http://localhost:5173"
+          wait-on: "http://localhost:5173/dvla-viewer"
           browser: chrome
 
   server-check:
